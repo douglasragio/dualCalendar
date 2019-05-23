@@ -10,7 +10,7 @@ sap.ui.define([
 
 		metadata: {
 
-			properties: { // setter and getter are created behind the scenes,
+			properties: {
 				showValueHelp: {
 					type: "boolean",
 					defaultValue: true
@@ -43,18 +43,18 @@ sap.ui.define([
 
 		setStartDate: function (oDate) {
 			this.setProperty("startDate", oDate, true);
-			let oEndDate = this.getProperty("endDate");
+			var oEndDate = this.getProperty("endDate");
 			if (oDate === undefined || oEndDate === undefined) {
-				return
-			};
+				return;
+			}
 			this.setValue(oDate.toLocaleDateString() + ' até ' + oEndDate.toLocaleDateString());
 		},
 		setEndDate: function (oDate) {
 			this.setProperty("endDate", oDate, true);
-			let oStartDate = this.getProperty("startDate");
+			var oStartDate = this.getProperty("startDate");
 			if (oDate === undefined || oStartDate === undefined) {
-				return
-			};
+				return;
+			}
 			this.setValue(oStartDate.toLocaleDateString() + ' até ' + oDate.toLocaleDateString());
 		},
 
@@ -62,17 +62,8 @@ sap.ui.define([
 
 			var that = this;
 
-			let oCalBegda = new sap.ui.unified.Calendar("Cal1", {
-				select: function (oEvent) {},
-				cancel: function (oEvent) {},
-				startDateChange: function (oEvent) {}
-			});
-
-			let oCalEndda = new sap.ui.unified.Calendar("Cal2", {
-				select: function (oEvent) {},
-				cancel: function (oEvent) {},
-				startDateChange: function (oEvent) {}
-			});
+			var oCalBegda = new sap.ui.unified.Calendar("Cal1");
+			var oCalEndda = new sap.ui.unified.Calendar("Cal2");
 
 			if (that.getStartDate() !== undefined) {
 				oCalBegda.addSelectedDate(new DateRange({
@@ -85,7 +76,7 @@ sap.ui.define([
 				}));
 			}
 
-			let oFlexCalendarBeg = new sap.m.VBox("flexCalendarBeg", {
+			var oFlexCalendarBeg = new sap.m.VBox("flexCalendarBeg", {
 				alignItems: sap.m.FlexAlignItems.Center,
 				items: [
 					new sap.m.Label("lblBeg", {
@@ -95,7 +86,7 @@ sap.ui.define([
 				]
 			});
 
-			let oFlexCalendarEnd = new sap.m.VBox("flexCalendarEnd", {
+			var oFlexCalendarEnd = new sap.m.VBox("flexCalendarEnd", {
 				alignItems: sap.m.FlexAlignItems.Center,
 				items: [
 					new sap.m.Label("lblEnd", {
@@ -105,16 +96,16 @@ sap.ui.define([
 				]
 			});
 
-			let oFlexCalendar = new sap.m.HBox("flexCalendar", {
+			var oFlexCalendar = new sap.m.HBox("flexCalendar", {
 				alignItems: sap.m.FlexAlignItems.Start,
 				displayInline: true,
 				items: [
 					oFlexCalendarBeg,
-					oFlexCalendarEnd,
+					oFlexCalendarEnd
 				]
 			});
 
-			let oDialog = new sap.m.Dialog("dialogCalendar", {
+			var oDialog = new sap.m.Dialog("dialogCalendar", {
 				title: "Calend\u00e1rio",
 				icon: "sap-icon://calendar",
 				content: [
@@ -124,17 +115,17 @@ sap.ui.define([
 					new sap.m.Button({
 						text: "Cancelar",
 						type: sap.m.ButtonType.Default,
-						press: function (oEvent) {
+						press: function () {
 							oDialog.close();
 						}
 					}),
 					new sap.m.Button({
 						text: "OK",
 						type: sap.m.ButtonType.Emphasized,
-						press: function (oEvent) {
+						press: function () {
 
-							let aStartDate = oCalBegda.getSelectedDates();
-							let aEndDate = oCalEndda.getSelectedDates();
+							var aStartDate = oCalBegda.getSelectedDates();
+							var aEndDate = oCalEndda.getSelectedDates();
 							if (aStartDate.length === 0 || aEndDate.length === 0) {
 								MessageToast.show("Selecionar período desejado");
 								return;

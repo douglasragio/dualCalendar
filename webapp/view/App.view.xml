@@ -9,8 +9,14 @@
 							<Label text="Product" labelFor="productInput"/>
 							<Input id="productInput" type="Text" textFormatMode="KeyValue" placeholder="Enter Product ..." showValueHelp="true"
 								valueHelpRequest=".onValueRequest"></Input>
-							<dc:DualCalendar id="productInputDC" type="Text" textFormatMode="KeyValue" placeholder="Dual Calendars" startDate="{/startDate}"
+								
+							<dc:DualCalendar 
+								id="productInputDC" 
+								startDate="{/startDate}"
 								endDate="{/endDate}"/>
+								
+								
+								
 							<DateRangeSelection id="fltrIssuanceDate" displayFormat="short" valueFormat="yyyy-MM-ddT00:00:00" change="handleChange" enabled="false"/>
 						</content>
 					</Panel>
