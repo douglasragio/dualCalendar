@@ -47,7 +47,7 @@ sap.ui.define([
 			if (oDate === undefined || oEndDate === undefined) {
 				return;
 			}
-			this.setValue(oDate.toLocaleDateString() + ' até ' + oEndDate.toLocaleDateString());
+			this.setValue(oDate.toLocaleDateString() + " at\u00e9 " + oEndDate.toLocaleDateString());
 		},
 		setEndDate: function (oDate) {
 			this.setProperty("endDate", oDate, true);
@@ -55,7 +55,7 @@ sap.ui.define([
 			if (oDate === undefined || oStartDate === undefined) {
 				return;
 			}
-			this.setValue(oStartDate.toLocaleDateString() + ' até ' + oDate.toLocaleDateString());
+			this.setValue(oStartDate.toLocaleDateString() + " at\u00e9 " + oDate.toLocaleDateString());
 		},
 
 		ontap: function (oEvent) {
@@ -127,12 +127,12 @@ sap.ui.define([
 							var aStartDate = oCalBegda.getSelectedDates();
 							var aEndDate = oCalEndda.getSelectedDates();
 							if (aStartDate.length === 0 || aEndDate.length === 0) {
-								MessageToast.show("Selecionar período desejado");
+								MessageToast.show("Selecionar per\u00edodo desejado");
 								return;
 							}
 
 							if (aStartDate[0].getStartDate() > aEndDate[0].getStartDate()) {
-								MessageToast.show("Data início posterior a data fim");
+								MessageToast.show("Data in\u00edcio posterior a data t\u00e9rmino");
 								return;
 							}
 
