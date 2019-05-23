@@ -1,23 +1,27 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified">
-	<ResponsivePopover title="{Name}" showHeader="false" class="sapUiPopupWithPadding" placement="Bottom">
+	<Dialog title="Hello {/recipient/name}">
+		<content>
+			<FlexBox alignItems="Start" justifyContent="Start" direction="Row">
+				<Panel>
+					<FlexBox alignItems="Start" justifyContent="Start" direction="Column">
+						<items>
+							<Label text="Data início" class="sapUiContentPadding"/>
+							<u:Calendar id="calendarBegin" select="onSelectBegin"/>
+						</items>
+					</FlexBox>
+				</Panel>
+				<Panel>
+					<FlexBox alignItems="Start" justifyContent="Start" direction="Column">
+						<items>
+							<Label text="Data fim" class="sapUiContentPadding"/>
+							<u:Calendar id="calendarEnd" select="onSelectEnd"/>
+						</items>
+					</FlexBox>
+				</Panel>
+			</FlexBox>
+		</content>
 		<endButton type="Transparent">
 			<Button text="OK" press="onOk"/>
 		</endButton>
-		<content>
-			<FlexBox alignItems="Start" justifyContent="Start" direction="Row">
-				<FlexBox alignItems="Start" justifyContent="Start" direction="Column">
-					<items>
-						<Label text="Data início" class="sapUiContentPadding"/>
-						<u:Calendar id="calendarBegin" select="onSelectBegin"/>
-					</items>
-				</FlexBox>
-				<FlexBox alignItems="Start" justifyContent="Start" direction="Column">
-					<items>
-						<Label text="Data fim" class="sapUiContentPadding"/>
-						<u:Calendar id="calendarEnd" select="onSelectEnd"/>
-					</items>
-				</FlexBox>
-			</FlexBox>
-		</content>
-	</ResponsivePopover>
+	</Dialog>
 </core:FragmentDefinition>

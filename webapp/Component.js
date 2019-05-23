@@ -2,7 +2,7 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
 	"App/dataSelect/model/models"
-], function (UIComponent, Device, models) {
+], function (UIComponent, Device, models, Util) {
 	"use strict";
 
 	return UIComponent.extend("App.dataSelect.Component", {
@@ -25,6 +25,8 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
+
 		}
+
 	});
 });

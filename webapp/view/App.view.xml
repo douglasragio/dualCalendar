@@ -1,14 +1,19 @@
-<mvc:View controllerName="App.dataSelect.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="App.dataSelect.controller.App" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:dc="App.dataSelect.util"
+	displayBlock="true">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content>
-						<Label text="Product" labelFor="productInput"/>
-						<Input id="productInput" type="Text" textFormatMode="KeyValue" placeholder="Enter Product ..." showSuggestion="true" showValueHelp="true"
-							valueHelpRequest=".onValueRequest"></Input>
-						<DateRangeSelection id="fltrIssuanceDate" displayFormat="short" valueFormat="yyyy-MM-ddT00:00:00" change="handleChange" enabled="false"/>
-					</content>
+					<Panel id="idPanel">
+						<content>
+							<Label text="Product" labelFor="productInput"/>
+							<Input id="productInput" type="Text" textFormatMode="KeyValue" placeholder="Enter Product ..." showValueHelp="true"
+								valueHelpRequest=".onValueRequest"></Input>
+							<dc:DualCalendar id="productInputDC" type="Text" textFormatMode="KeyValue" placeholder="Dual Calendars" startDate="{/startDate}"
+								endDate="{/endDate}"/>
+							<DateRangeSelection id="fltrIssuanceDate" displayFormat="short" valueFormat="yyyy-MM-ddT00:00:00" change="handleChange" enabled="false"/>
+						</content>
+					</Panel>
 				</Page>
 			</pages>
 		</App>
