@@ -1,4 +1,7 @@
-<mvc:View controllerName="App.dataSelect.controller.App" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:dc="App.dataSelect.util"
+<mvc:View controllerName="App.dataSelect.controller.App" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:utl="App.dataSelect.util"
 	displayBlock="true">
 	<Shell id="shell">
 		<App id="app">
@@ -6,18 +9,8 @@
 				<Page id="page" title="{i18n>title}">
 					<Panel id="idPanel">
 						<content>
-							<Label text="Product" labelFor="productInput"/>
-							<Input id="productInput" type="Text" textFormatMode="KeyValue" placeholder="Enter Product ..." showValueHelp="true"
-								valueHelpRequest=".onValueRequest"></Input>
-								
-							<dc:DualCalendar 
-								id="productInputDC" 
-								startDate="{/startDate}"
-								endDate="{/endDate}"/>
-								
-								
-								
-							<DateRangeSelection id="fltrIssuanceDate" displayFormat="short" valueFormat="yyyy-MM-ddT00:00:00" change="handleChange" enabled="false"/>
+							<Label text="Range date" labelFor="rangeDate"/>
+							<utl:DualCalendar id="rangeDate" startDate="{/startDate}" endDate="{/endDate}"/>
 						</content>
 					</Panel>
 				</Page>

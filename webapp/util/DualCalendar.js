@@ -17,13 +17,15 @@ sap.ui.define([
 				},
 				valueHelpOnly: {
 					type: "boolean",
-					defaultValue: true
+					defaultValue: false
 				},
 				startDate: {
-					type: "any"
+					type: "any",
+					defaultValue: new Date()
 				},
 				endDate: {
-					type: "any"
+					type: "any",
+					defaultValue: new Date()
 				}
 			}
 
@@ -45,6 +47,7 @@ sap.ui.define([
 			this.setProperty("startDate", oDate, true);
 			var oEndDate = this.getProperty("endDate");
 			if (oDate === undefined || oEndDate === undefined) {
+				this.setValue("");
 				return;
 			}
 			this.setValue(oDate.toLocaleDateString() + " at\u00e9 " + oEndDate.toLocaleDateString());
@@ -53,6 +56,7 @@ sap.ui.define([
 			this.setProperty("endDate", oDate, true);
 			var oStartDate = this.getProperty("startDate");
 			if (oDate === undefined || oStartDate === undefined) {
+				this.setValue("");
 				return;
 			}
 			this.setValue(oStartDate.toLocaleDateString() + " at\u00e9 " + oDate.toLocaleDateString());
@@ -75,7 +79,6 @@ sap.ui.define([
 					startDate: that.getEndDate()
 				}));
 			}
-
 
 			var oFlexCalendarBeg = new sap.m.VBox("flexCalendarBeg", {
 				alignItems: sap.m.FlexAlignItems.Center,
@@ -114,6 +117,15 @@ sap.ui.define([
 				],
 				buttons: [
 					new sap.m.Button({
+						text: "Limpar",
+						type: sap.m.ButtonType.Default,
+						press: function () {
+							that.setStartDate(undefined);
+							that.setEndDate(undefined);
+							oDialog.close();
+						}
+					}),
+					new sap.m.Button({
 						text: "Cancelar",
 						type: sap.m.ButtonType.Default,
 						press: function () {
@@ -143,6 +155,7 @@ sap.ui.define([
 							oDialog.close();
 						}
 					})
+
 				],
 				afterClose: function () {
 					oDialog.destroy();
