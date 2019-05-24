@@ -76,6 +76,7 @@ sap.ui.define([
 				}));
 			}
 
+
 			var oFlexCalendarBeg = new sap.m.VBox("flexCalendarBeg", {
 				alignItems: sap.m.FlexAlignItems.Center,
 				items: [
