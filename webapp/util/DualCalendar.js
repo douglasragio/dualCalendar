@@ -7,6 +7,7 @@ sap.ui.define([
 
 	return sap.m.Input.extend("DualCalendar", {
 
+
 		metadata: {
 
 			properties: {
