@@ -1,12 +1,11 @@
 sap.ui.define([
-	"sap/base/Log",
 	"sap/ui/unified/DateRange",
 	"sap/m/MessageToast"
 
-], function (log, DateRange, MessageToast) {
+], function (DateRange, MessageToast) {
 	"use strict";
 
-	return sap.m.Input.extend("App.dataSelect.util.DualCalendar", {
+	return sap.m.Input.extend("DualCalendar", {
 
 		metadata: {
 
@@ -17,7 +16,7 @@ sap.ui.define([
 				},
 				valueHelpOnly: {
 					type: "boolean",
-					defaultValue: false
+					defaultValue: true
 				},
 				startDate: {
 					type: "any",
@@ -36,7 +35,6 @@ sap.ui.define([
 		},
 
 		onAfterRendering: function () {
-			log.info("onAfterRendering");
 			this.fireValueHelpRequest({
 				fromSuggestions: true
 			});
@@ -50,7 +48,7 @@ sap.ui.define([
 				this.setValue("");
 				return;
 			}
-			this.setValue(oDate.toLocaleDateString() + " at\u00e9 " + oEndDate.toLocaleDateString());
+			this.setValue(oDate.toLocaleDateString() + " - " + oEndDate.toLocaleDateString());
 		},
 		setEndDate: function (oDate) {
 			this.setProperty("endDate", oDate, true);
@@ -59,7 +57,7 @@ sap.ui.define([
 				this.setValue("");
 				return;
 			}
-			this.setValue(oStartDate.toLocaleDateString() + " at\u00e9 " + oDate.toLocaleDateString());
+			this.setValue(oStartDate.toLocaleDateString() + " - " + oDate.toLocaleDateString());
 		},
 
 		ontap: function (oEvent) {
@@ -155,7 +153,6 @@ sap.ui.define([
 							oDialog.close();
 						}
 					})
-
 				],
 				afterClose: function () {
 					oDialog.destroy();
